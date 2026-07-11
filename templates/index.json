@@ -1,0 +1,104 @@
+{
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_text": "Craft",
+        "logo_text_highlight": "Lovely",
+        "show_tagline": true,
+        "tagline": "Create • Inspire • Share"
+      }
+    },
+    "hero-banner": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Welcome to CraftLovely",
+        "subheading": "Create. Inspire. Share Your Passion.",
+        "button_text": "Shop Now",
+        "button_link": "/collections/all",
+        "show_floating_icons": true
+      }
+    },
+    "featured-collections": {
+      "type": "featured-collections",
+      "settings": {
+        "heading": "Explore Our Collections",
+        "subheading": "Discover unique digital downloads and print-on-demand products made for creators like you"
+      },
+      "blocks": [
+        {
+          "type": "collection",
+          "settings": {
+            "icon": "📱",
+            "title": "Digital Downloads",
+            "description": "Instant access to printable art, planners, and digital resources",
+            "button_text": "Browse Now"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "icon": "👕",
+            "title": "Print on Demand",
+            "description": "Custom apparel, mugs, and accessories with unique designs",
+            "button_text": "Shop POD"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "icon": "📝",
+            "title": "Creative Templates",
+            "description": "Professional templates for social media, branding, and more",
+            "button_text": "Explore Templates"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "icon": "🎄",
+            "title": "Seasonal Designs",
+            "description": "Celebrate every season with themed artwork and decorations",
+            "button_text": "Shop Seasonal"
+          }
+        }
+      ]
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "heading": "Trending Products",
+        "subheading": "Our most popular designs, loved by creators worldwide",
+        "products_to_show": 4
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Join Our Creative Community!",
+        "subtext": "Sign up for exclusive freebies & design tips!",
+        "placeholder": "Enter your email",
+        "button_text": "Subscribe"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "footer_heading": "CraftLovely",
+        "footer_about_text": "Since 2009, creating unique digital downloads and print-on-demand products for creators worldwide.",
+        "quicklinks_heading": "Shop",
+        "company_heading": "Company",
+        "copyright_text": "All rights reserved.",
+        "footer_made_with_text": "Made with ♥ for creators worldwide"
+      }
+    }
+  },
+  "order": [
+    "header",
+    "hero-banner",
+    "featured-collections",
+    "featured-products",
+    "newsletter",
+    "footer"
+  ]
+}

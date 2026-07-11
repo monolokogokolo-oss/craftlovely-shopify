@@ -1,0 +1,55 @@
+<section class="page-hero">
+  <div class="deco-circle deco-circle-1"></div>
+  <div class="deco-circle deco-circle-2"></div>
+  <div class="page-hero-content">
+    <h1>{{ blog.title | escape }}</h1>
+    {% if blog.description != blank %}
+      <p>{{ blog.description | strip_html | truncatewords: 30 }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="blog-page">
+  <div class="articles-grid">
+    {% for article in blog.articles %}
+      <article class="article-card">
+        {% if article.image %}
+          <a href="{{ article.url }}">
+            <img src="{{ article.image | img_url: '600x400', crop: 'center' }}" alt="{{ article.image.alt | escape }}" loading="lazy">
+          </a>
+        {% endif %}
+        <div class="article-content">
+          <h3><a href="{{ article.url }}">{{ article.title | escape }}</a></h3>
+          <p class="article-meta">
+            {{ article.author }} — {{ article.published_at | date: '%B %d, %Y' }}
+          </p>
+          <p>{{ article.content | strip_html | truncatewords: 30 }}</p>
+          <a href="{{ article.url }}" class="btn btn-pink article-btn">{{ 'blogs.article.read_more' | t | default: 'Read More' }}</a>
+        </div>
+      </article>
+    {% else %}
+      <div class="empty-collection" style="grid-column: 1/-1;">
+        <p>{{ 'blogs.general.no_articles' | t | default: 'No articles yet.' }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination">
+      {{ paginate | default_pagination }}
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Blog",
+      "category": "Main"
+    }
+  ]
+}
+{% endschema %}

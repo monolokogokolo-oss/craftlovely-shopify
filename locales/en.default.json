@@ -1,0 +1,49 @@
+{
+  "accessibility": {
+    "toggle_menu": "Toggle navigation",
+    "search": "Search",
+    "account": "Account",
+    "cart": "Shopping cart"
+  },
+  "newsletter": {
+    "label": "Email address"
+  },
+  "collections": {
+    "general": {
+      "no_matches": "No products found in this collection.",
+      "title": "Collections",
+      "back": "Back to Collections"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable"
+    },
+    "placeholder": "Coming Soon"
+  },
+  "blogs": {
+    "article": {
+      "read_more": "Read More"
+    },
+    "general": {
+      "no_articles": "No articles yet."
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "remove": "Remove",
+      "total": "Total",
+      "savings": "You save",
+      "update": "Update",
+      "checkout": "Check Out",
+      "empty": "Your cart is currently empty.",
+      "continue_shopping": "Continue Shopping"
+    },
+    "label": {
+      "quantity": "Qty"
+    }
+  }
+}

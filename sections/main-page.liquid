@@ -1,0 +1,26 @@
+<section class="page-hero">
+  <div class="deco-circle deco-circle-1"></div>
+  <div class="deco-circle deco-circle-2"></div>
+  <div class="page-hero-content">
+    <h1>{{ page.title | escape }}</h1>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="page-content-inner">
+    {{ page.content }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Page",
+      "category": "Main"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,172 @@
+[
+  {
+    "name": "Theme Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Color Palette"
+      },
+      {
+        "type": "color",
+        "id": "color_teal",
+        "label": "Mint Teal",
+        "default": "#7AB8B5"
+      },
+      {
+        "type": "color",
+        "id": "color_teal_dark",
+        "label": "Teal Dark",
+        "default": "#5a9a97"
+      },
+      {
+        "type": "color",
+        "id": "color_pink",
+        "label": "Blush Pink",
+        "default": "#E89B9B"
+      },
+      {
+        "type": "color",
+        "id": "color_pink_dark",
+        "label": "Pink Dark",
+        "default": "#d68585"
+      },
+      {
+        "type": "color",
+        "id": "color_cream",
+        "label": "Cream Background",
+        "default": "#FDFBF7"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Dark Text",
+        "default": "#4A4A4A"
+      },
+      {
+        "type": "color",
+        "id": "color_text_light",
+        "label": "Light Text",
+        "default": "#777777"
+      },
+      {
+        "type": "color",
+        "id": "color_white",
+        "label": "White",
+        "default": "#FFFFFF"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Font Settings"
+      },
+      {
+        "type": "select",
+        "id": "font_script",
+        "label": "Script / Logo Font",
+        "options": [
+          { "value": "'Great Vibes', cursive", "label": "Great Vibes" },
+          { "value": "'Caveat', cursive", "label": "Caveat" },
+          { "value": "'Dancing Script', cursive", "label": "Dancing Script" }
+        ],
+        "default": "'Great Vibes', cursive"
+      },
+      {
+        "type": "select",
+        "id": "font_heading",
+        "label": "Heading Font",
+        "options": [
+          { "value": "'Playfair Display', serif", "label": "Playfair Display" },
+          { "value": "'Lora', serif", "label": "Lora" },
+          { "value": "'Merriweather', serif", "label": "Merriweather" }
+        ],
+        "default": "'Playfair Display', serif"
+      },
+      {
+        "type": "select",
+        "id": "font_body",
+        "label": "Body Font",
+        "options": [
+          { "value": "'Nunito', sans-serif", "label": "Nunito" },
+          { "value": "'Poppins', sans-serif", "label": "Poppins" },
+          { "value": "'Raleway', sans-serif", "label": "Raleway" }
+        ],
+        "default": "'Nunito', sans-serif"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "header",
+        "content": "General Layout"
+      },
+      {
+        "type": "range",
+        "id": "border_radius_base",
+        "label": "Base Border Radius",
+        "min": 0,
+        "max": 30,
+        "step": 5,
+        "default": 15,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "border_radius_button",
+        "label": "Button Border Radius",
+        "min": 0,
+        "max": 50,
+        "step": 5,
+        "default": 50,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social Links"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest URL",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "social_etsy",
+        "label": "Etsy URL",
+        "default": "#"
+      }
+    ]
+  },
+  {
+    "name": "Custom CSS",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Additional Styles"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS",
+        "info": "Add your own custom CSS here."
+      }
+    ]
+  }
+]

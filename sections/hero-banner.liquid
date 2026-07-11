@@ -1,0 +1,127 @@
+<section class="hero">
+  <!-- Decorative Watercolor Circles -->
+  <div class="deco-circle deco-circle-1"></div>
+  <div class="deco-circle deco-circle-2"></div>
+
+  <!-- Floating Decorative Icons -->
+  {% if section.settings.show_floating_icons %}
+    <span class="hero-float-icons">✂️</span>
+    <span class="hero-float-icons">🌸</span>
+    <span class="hero-float-icons">🎨</span>
+  {% endif %}
+
+  <div class="hero-container">
+    <div class="hero-content">
+      {% if section.settings.heading != blank %}
+        <h1>{{ section.settings.heading | escape }}</h1>
+      {% else %}
+        <h1>Welcome to Craft<span>Lovely</span></h1>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="hero-subtext">{{ section.settings.subheading | escape }}</p>
+      {% endif %}
+
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="btn btn-teal hero-btn">
+          {{ section.settings.button_text | escape }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.settings.hero_image != blank %}
+      <div class="hero-image">
+        {% if section.settings.hero_video != blank %}
+          <video
+            src="{{ section.settings.hero_video | file_url }}"
+            autoplay
+            loop
+            muted
+            playsinline
+            loading="lazy"
+          ></video>
+        {% else %}
+          <img
+            src="{{ section.settings.hero_image | img_url: '800x' }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome to CraftLovely",
+      "info": "Displayed in the script/handmade font."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Create. Inspire. Share Your Passion."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image",
+      "info": "800px wide recommended. Shown on the right side."
+    },
+    {
+      "type": "file",
+      "id": "hero_video",
+      "label": "Hero video (optional)",
+      "accept": ".mp4,.webm,.ogg",
+      "info": "If set, plays instead of the image with autoplay + loop."
+    },
+    {
+      "type": "header",
+      "content": "Decoration"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_floating_icons",
+      "label": "Show floating decorative icons",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "category": "Hero"
+    }
+  ]
+}
+{% endschema %}

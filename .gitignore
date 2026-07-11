@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+.shopify
+.env
+*.log
+config/settings_data.json

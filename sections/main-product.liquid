@@ -1,0 +1,82 @@
+<section class="product-page">
+  <div class="product-container">
+    <div class="product-gallery">
+      {% if product.featured_image %}
+        <div class="product-main-image">
+          <img
+            src="{{ product.featured_image | img_url: '800x' }}"
+            alt="{{ product.featured_image.alt | escape }}"
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
+
+      {% if product.images.size > 1 %}
+        <div class="product-thumbnails">
+          {% for image in product.images limit: 4 %}
+            <div class="product-thumb">
+              <img
+                src="{{ image | img_url: '150x150', crop: 'center' }}"
+                alt="{{ image.alt | escape }}"
+                loading="lazy"
+              >
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="product-details">
+      <h1>{{ product.title | escape }}</h1>
+
+      <div class="product-price">
+        {% if product.compare_at_price > product.price %}
+          <span class="price-compare">{{ product.compare_at_price | money }}</span>
+        {% endif %}
+        <span class="price-current">{{ product.price | money }}</span>
+      </div>
+
+      <div class="product-description">
+        {{ product.description }}
+      </div>
+
+      {% form 'product', product %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        {% unless product.has_only_default_variant %}
+          <div class="product-variants">
+            {% for option in product.options_with_values %}
+              <div class="product-option">
+                <label>{{ option.name | escape }}</label>
+                <select name="options[{{ option.name | escape }}]">
+                  {% for value in option.values %}
+                    <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>
+                      {{ value | escape }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+            {% endfor %}
+          </div>
+        {% endunless %}
+
+        <button type="submit" name="add" class="btn btn-teal product-add-btn">
+          {{ 'products.product.add_to_cart' | t | default: 'Add to Cart' }}
+        </button>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product page",
+      "category": "Main"
+    }
+  ]
+}
+{% endschema %}

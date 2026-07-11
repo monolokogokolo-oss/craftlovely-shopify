@@ -1,0 +1,47 @@
+<section class="page-hero">
+  <div class="deco-circle deco-circle-1"></div>
+  <div class="deco-circle deco-circle-2"></div>
+  <div class="page-hero-content">
+    <h1>{{ collection.title | default: page_title | escape }}</h1>
+    {% if collection.description != blank %}
+      <p>{{ collection.description | strip_html | truncatewords: 30 }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="collection-page">
+  <div class="collection-controls">
+    <div class="collection-count">
+      {{ 'collections.general.items_with_count' | t: count: collection.products_count | default: collection.products_count | append: ' products' }}
+    </div>
+  </div>
+
+  <div class="products-grid">
+    {% for product in collection.products %}
+      {% render 'product-card', product: product %}
+    {% else %}
+      <div class="empty-collection">
+        <p>{{ 'collections.general.no_matches' | t | default: 'No products found in this collection.' }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination">
+      {{ paginate | default_pagination }}
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Collection page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection page",
+      "category": "Main"
+    }
+  ]
+}
+{% endschema %}

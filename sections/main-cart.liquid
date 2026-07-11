@@ -1,0 +1,73 @@
+<section class="page-hero">
+  <div class="deco-circle deco-circle-1"></div>
+  <div class="deco-circle deco-circle-2"></div>
+  <div class="page-hero-content">
+    <h1>{{ 'cart.general.title' | t | default: 'Your Cart' }}</h1>
+  </div>
+</section>
+
+<section class="cart-page">
+  <div class="cart-container">
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post" class="cart-form">
+        <div class="cart-items">
+          {% for item in cart.items %}
+            <div class="cart-item">
+              <div class="cart-item-image">
+                <img src="{{ item.image | img_url: '150x150', crop: 'center' }}" alt="{{ item.title | escape }}" loading="lazy">
+              </div>
+              <div class="cart-item-details">
+                <h4>{{ item.product.title | escape }}</h4>
+                <p class="cart-item-variant">{{ item.variant.title | escape }}</p>
+                <p class="cart-item-price">{{ item.price | money }}</p>
+                <div class="cart-item-quantity">
+                  <label for="updates_{{ item.key }}">{{ 'cart.label.quantity' | t | default: 'Qty' }}</label>
+                  <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0">
+                </div>
+                <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-item-remove">{{ 'cart.general.remove' | t | default: 'Remove' }}</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="cart-summary">
+          <p class="cart-total">
+            <strong>{{ 'cart.general.total' | t | default: 'Total' }}:</strong>
+            <span>{{ cart.total_price | money }}</span>
+          </p>
+
+          {% if cart.total_discounts > 0 %}
+            <p class="cart-savings">
+              {{ 'cart.general.savings' | t | default: 'You save' }}: {{ cart.total_discounts | money }}
+            </p>
+          {% endif %}
+
+          <div class="cart-actions">
+            <button type="submit" name="update" class="btn btn-pink">{{ 'cart.general.update' | t | default: 'Update' }}</button>
+            <button type="submit" name="checkout" class="btn btn-teal">{{ 'cart.general.checkout' | t | default: 'Check Out' }}</button>
+          </div>
+        </div>
+      </form>
+    {% else %}
+      <div class="empty-cart">
+        <p>{{ 'cart.general.empty' | t | default: 'Your cart is currently empty.' }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn-teal" style="margin-top: 20px;">
+          {{ 'cart.general.continue_shopping' | t | default: 'Continue Shopping' }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Cart",
+      "category": "Main"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,24 @@
+<div class="product-card">
+  <a href="{{ product.url | default: '#' }}">
+    {% if product.featured_image %}
+      <img
+        src="{{ product.featured_image | img_url: '400x400', crop: 'center' }}"
+        alt="{{ product.title | escape }}"
+        loading="lazy"
+      >
+    {% else %}
+      <div class="product-card-placeholder">
+        <span>{{ 'product.placeholder' | t | default: 'Coming Soon' }}</span>
+      </div>
+    {% endif %}
+  </a>
+
+  <div class="product-info">
+    <h4>{{ product.title | default: 'Product Title' | escape }}</h4>
+    {% if product.price %}
+      <span class="price">{{ product.price | money }}</span>
+    {% else %}
+      <span class="price">$0.00</span>
+    {% endif %}
+  </div>
+</div>

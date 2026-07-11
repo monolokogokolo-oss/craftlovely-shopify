@@ -1,0 +1,117 @@
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-col footer-about">
+      <h4>{{ section.settings.footer_heading | escape }}</h4>
+      <p>{{ section.settings.footer_about_text | escape }}</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>{{ section.settings.quicklinks_heading | escape }}</h4>
+      <ul>
+        {% if section.settings.quicklinks_menu != blank %}
+          {% for link in section.settings.quicklinks_menu.links %}
+            <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+          {% endfor %}
+        {% else %}
+          <li><a href="/collections/digital-downloads">Digital Downloads</a></li>
+          <li><a href="/collections/pod-apparel">POD Apparel</a></li>
+          <li><a href="/collections/templates">Templates</a></li>
+          <li><a href="/collections/seasonal">Seasonal Designs</a></li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>{{ section.settings.company_heading | escape }}</h4>
+      <ul>
+        {% if section.settings.company_menu != blank %}
+          {% for link in section.settings.company_menu.links %}
+            <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+          {% endfor %}
+        {% else %}
+          <li><a href="/pages/about">About Us</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+          <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/policies/refund-policy">Refund Policy</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. {{ section.settings.copyright_text | escape }}</p>
+    <p>{{ section.settings.footer_made_with_text | escape }}</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "About Column"
+    },
+    {
+      "type": "text",
+      "id": "footer_heading",
+      "label": "Heading",
+      "default": "CraftLovely"
+    },
+    {
+      "type": "textarea",
+      "id": "footer_about_text",
+      "label": "About text",
+      "default": "Since 2009, creating unique digital downloads and print-on-demand products for creators worldwide."
+    },
+    {
+      "type": "header",
+      "content": "Quick Links Column"
+    },
+    {
+      "type": "text",
+      "id": "quicklinks_heading",
+      "label": "Heading",
+      "default": "Shop"
+    },
+    {
+      "type": "link_list",
+      "id": "quicklinks_menu",
+      "label": "Quick links menu",
+      "default": "footer"
+    },
+    {
+      "type": "header",
+      "content": "Company Column"
+    },
+    {
+      "type": "text",
+      "id": "company_heading",
+      "label": "Heading",
+      "default": "Company"
+    },
+    {
+      "type": "link_list",
+      "id": "company_menu",
+      "label": "Company links menu",
+      "default": "footer"
+    },
+    {
+      "type": "header",
+      "content": "Footer Bottom"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "All rights reserved."
+    },
+    {
+      "type": "text",
+      "id": "footer_made_with_text",
+      "label": "Made with text",
+      "default": "Made with ♥ for creators worldwide"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,73 @@
+<section class="page-hero">
+  <div class="deco-circle deco-circle-1"></div>
+  <div class="deco-circle deco-circle-2"></div>
+  <div class="page-hero-content">
+    <h1>{{ article.title | escape }}</h1>
+    <p class="article-meta" style="font-family: var(--font-body); font-size: 0.95rem; color: var(--color-text-light);">
+      {{ article.author }} — {{ article.published_at | date: '%B %d, %Y' }}
+    </p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="page-content-inner">
+    {% if article.image %}
+      <img
+        src="{{ article.image | img_url: '1200x600', crop: 'center' }}"
+        alt="{{ article.image.alt | escape }}"
+        loading="lazy"
+        style="width: 100%; border-radius: var(--radius-base); margin-bottom: 30px; box-shadow: var(--shadow-card);"
+      >
+    {% endif %}
+
+    <div class="article-body">
+      {{ article.content }}
+    </div>
+
+    <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #f0f0f0;">
+      {% if blog.comments_enabled? %}
+        <h3 style="font-family: var(--font-heading); margin-bottom: 20px;">{{ 'blogs.comments.title' | t | default: 'Comments' }}</h3>
+        {% paginate article.comments by 20 %}
+          {% for comment in article.comments %}
+            <div style="background: var(--color-cream); padding: 20px; border-radius: var(--radius-base); margin-bottom: 15px;">
+              <strong>{{ comment.author }}</strong>
+              <span style="font-size: 0.85rem; color: var(--color-text-light);"> — {{ comment.created_at | date: '%B %d, %Y' }}</span>
+              <p style="margin-top: 10px;">{{ comment.content }}</p>
+            </div>
+          {% endfor %}
+          {% if paginate.pages > 1 %}
+            <div class="pagination">{{ paginate | default_pagination }}</div>
+          {% endif %}
+        {% endpaginate %}
+
+        <div style="margin-top: 30px;">
+          {% form 'new_comment', article %}
+            <h4 style="font-family: var(--font-heading); margin-bottom: 15px;">{{ 'blogs.comments.title' | t | default: 'Leave a comment' }}</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+              <input type="text" name="comment[author]" placeholder="{{ 'blogs.comments.name' | t | default: 'Name' }}" required
+                style="padding: 12px 16px; border: 2px solid #eee; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.95rem; outline: none;">
+              <input type="email" name="comment[email]" placeholder="{{ 'blogs.comments.email' | t | default: 'Email' }}" required
+                style="padding: 12px 16px; border: 2px solid #eee; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.95rem; outline: none;">
+            </div>
+            <textarea name="comment[body]" placeholder="{{ 'blogs.comments.message' | t | default: 'Comment' }}" required rows="5"
+              style="width: 100%; padding: 12px 16px; border: 2px solid #eee; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.95rem; outline: none; resize: vertical;"></textarea>
+            <button type="submit" class="btn btn-teal" style="margin-top: 15px;">{{ 'blogs.comments.post' | t | default: 'Post Comment' }}</button>
+          {% endform %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Article",
+      "category": "Main"
+    }
+  ]
+}
+{% endschema %}
