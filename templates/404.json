@@ -1,21 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "header": {
       "type": "header",
+      "settings": {
+        "logo_text": "Craft",
+        "logo_text_highlight": "Lovely",
+        "show_tagline": true,
+        "tagline": "Create • Inspire • Share",
+        "menu": "main-menu"
+      }
+    },
+    "main_collection_6mJMjr": {
+      "type": "main-collection",
+      "name": "Collection page",
       "settings": {}
     },
-    "main-404": {
-      "type": "main-404",
-      "settings": {}
+    "featured_products_GriBF6": {
+      "type": "featured-products",
+      "name": "Featured Products",
+      "settings": {
+        "heading": "Trending Digital",
+        "subheading": "Our most popular designs, loved by creators worldwide",
+        "collection": "digital-downloads",
+        "products_to_show": 4
+      }
+    },
+    "featured_products_QNFCjm": {
+      "type": "featured-products",
+      "name": "Featured Products",
+      "settings": {
+        "heading": "Trending POD",
+        "subheading": "Our most popular designs, loved by creators worldwide",
+        "collection": "print-on-demand",
+        "products_to_show": 4
+      }
+    },
+    "newsletter_A7QNDf": {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "heading": "Join Our Creative Community!",
+        "subtext": "Sign up for exclusive freebies & design tips!",
+        "placeholder": "Enter your email",
+        "button_text": "Subscribe"
+      }
     },
     "footer": {
       "type": "footer",
-      "settings": {}
+      "settings": {
+        "footer_heading": "CraftLovely",
+        "footer_about_text": "Since 2009, creating unique digital downloads and print-on-demand products for creators worldwide.",
+        "quicklinks_heading": "Shop",
+        "quicklinks_menu": "footer",
+        "company_heading": "Company",
+        "company_menu": "footer",
+        "copyright_text": "All rights reserved.",
+        "footer_made_with_text": "Made with ♥ for creators worldwide"
+      }
     }
   },
   "order": [
     "header",
-    "main-404",
+    "main_collection_6mJMjr",
+    "featured_products_GriBF6",
+    "featured_products_QNFCjm",
+    "newsletter_A7QNDf",
     "footer"
   ]
 }
